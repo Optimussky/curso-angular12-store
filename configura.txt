@@ -1,0 +1,95 @@
+CURSO ANGULAR 12
+
+--Prerequisitos: tener instalado Node Version:14
+Documentación de Angular:
+    https://angular.io/guide/setup-local
+
+Instalar Angular desde terminal
+Install the Angular CLI
+
+    npm i -g @angular/cli
+
+-- corroborar la instalación:
+    ng --version
+
+CREAR UNA NUEVA APLICACIÓN
+    ng new my-app (ng new store)
+    cd store
+
+
+LIMPIAR EL ARCHIVO app.component.html
+-- y como prueba agregamos {{title}}
+
+ARRANCAMOS EL PROYECTO DESDE terminal
+    ng serve
+
+CREAR UN NUEVO COMPONENTE
+--Podemos crear: Servicios,Directivas, Pipes, Servicios
+-- ng generate es el comando para crear...
+-- component es lo que deseamos crear
+-- shared es la carpeta o directorio
+-- components es la carpeta que designamos para los componentes del project
+
+
+    ng generate component shared/components/header
+
+-- se puede comprimir la instrucción usando:
+--  ng g c shared/header
+
+INSTALAR LA DEPENDENCIA json-server
+    npm i -g json-server
+
+
+
+AGREGAR Angular Material (Se le denomina ESQUEMATICequivalente a bootstrap pero de componentes)
+-- Desde terminal escribimos dentro de la carpeta del directorio store
+    ng add @angular/material
+--Elegimos que SI queremos intalar con 
+    Y
+--Nos sugiere alguno de los temas para descargar Y  
+-- Escogemos el Indigo/Pink
+--Elegimos instalar de manera global la tipografía
+    Y
+--Aceptamos también el animation browser
+    Y
+
+LEVANTAMOS EL SERVIDOR EN ESTA TERMINAL con
+    ng serve
+
+CREAMOS UN NUEVO FICHERO EN src/app llamado:
+    material.module.ts
+--Se crea manual para aprender, pero... se puede hacer desde CLI
+
+CREAMOS DESDE app/modules.ts el código para consumir MaterialModulo
+
+CREAR UN NUEVO MÓDULO:
+--Desde terminal usamos el comando ng g m:
+    ng g m pages/products -m=app --route products
+--Donde pages/products es el nuevo módulo
+--La -m=app es la inyección a app.module.ts en segmento imports: [ ]
+-- La --route pemite generar una ruta llamada products
+
+CREAR UN NUEVO COMPONENTE DENTRO DE pages/products:
+    ng g c pages/products/product --skip-test
+--Podemos colocarnos exactamente en el directorio o usar la ruta pages/products
+--Además podemos agregar la flag(bandera) --skip-test para poder omitir crear el archivo de testing
+
+CREAMOS OTRA CARPETA LLAMADA interfaces DENTRO DE pages/products/interfaces
+
+CREAMOS EL MODELADO DE NUESTRA interface:
+// La interface se usa para el modelado de los datos
+// Si bien, se puede usar una clase, la dif radica en que la clase puede
+// recibir datos y muchas cosas más y la "interface" la usamos solo para modelar
+
+export interface Product {
+    id: number;
+    name: string;
+    price: number;
+    description: string;
+    categoryId: number;
+    stock: number;
+}
+
+CREAMOS UN Service desde CLI:
+    ng g service pages/products/services/products --skip-tests
+
